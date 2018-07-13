@@ -9,12 +9,12 @@ const clients = (clients = [], action) => {
   }
 };
 
-const user = (user = {}, action) => {
+const auth = (auth = {}, action) => {
   switch (action.type) {
     case 'STORE_TOKEN':
-      return {...user, token: action.token};
+      return {...auth, token: action.token, expiration: action.expiration};
     default:
-      return user;
+      return auth;
   }
 };
 
@@ -29,6 +29,6 @@ const count = (count = 0, action) => {
   }
 };
 
-const reducer = combineReducers({count, clients, user});
+const reducer = combineReducers({count, clients, auth});
 
 export default reducer;

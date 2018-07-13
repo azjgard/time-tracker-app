@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {login} from '../actions/api';
+import {getToken} from '../actions/api';
 
 const LoginComponent = ({token, storeToken}) => (
   <div>
@@ -14,13 +14,13 @@ const LoginComponent = ({token, storeToken}) => (
 
 const mapStateToProps = state => {
   return {
-    token: state.user.token,
+    token: state.auth.token,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    storeToken: () => dispatch(login('jord', 'thisismypassword')),
+    storeToken: () => dispatch(getToken('jords', 'thisismypassword')),
   };
 };
 
