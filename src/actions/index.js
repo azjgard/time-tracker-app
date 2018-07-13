@@ -1,14 +1,20 @@
-import debug from '../lib/logger';
+import {INCREMENT_COUNTER, DECREMENT_COUNTER} from './constants';
 
 export function incrementCounter() {
-  debug('hello', 'wordl');
   return {
-    type: 'INCREMENT_COUNTER',
+    type: INCREMENT_COUNTER,
   };
 }
 
 export function decrementCounter() {
   return {
-    type: 'DECREMENT_COUNTER',
+    type: DECREMENT_COUNTER,
+  };
+}
+
+export function loginAttempt() {
+  console.log('do some cool stuff');
+  return {
+    type: 'LOGIN_ATTEMPT',
   };
 }

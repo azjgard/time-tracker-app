@@ -1,5 +1,7 @@
 import {combineReducers} from 'redux';
 
+import constants from '../actions/constants';
+
 const clients = (clients = [], action) => {
   switch (action.type) {
     case 'UPDATE_CLIENTS':
