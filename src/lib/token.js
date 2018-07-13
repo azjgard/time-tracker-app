@@ -3,13 +3,13 @@ import {setCookie, getCookie} from './lib/cookie';
 
 import {STORE_TOKEN} from './constants';
 
+import debug from './logger';
+
 const BASE_URL = 'http://localhost:4000';
 const LOGIN_URL = `${BASE_URL}/auth/login`;
 
 const USER_TOKEN_COOKIE = 'user_token';
 const USER_TOKEN_EXPIRATION_COOKIE = 'user_token_expiration';
-
-// TODO: write tests for all of these functions
 
 /**
  * Given a name and password, request a new token from the API
@@ -17,12 +17,15 @@ const USER_TOKEN_EXPIRATION_COOKIE = 'user_token_expiration';
  * @returns {string} user token for authenticating API requests
  * @returns {false} indicator that the token request failed
  */
-export const getNewToken = (name, password) =>
-  new Promise(resolve => {
+export const getNewToken = (name, password) => {
+  debug('getNewToken');
+
+  return new Promise(resolve => {
     postAPI(LOGIN_URL, {name, password})
       .then(response => resolve(response.data.token))
       .catch(e => resolve(false));
   });
+};
 
 /**
  * Retrieves user token from cookie storage
@@ -31,6 +34,8 @@ export const getNewToken = (name, password) =>
  * @returns {false} indicator that there is no local token or it has expired
  */
 export const getLocalToken = async () => {
+  debug('getLocalToken');
+
   const localToken = await getCookie(USER_TOKEN_COOKIE);
   const localTokenExpiration = await getCookie(USER_TOKEN_EXPIRATION_COOKIE);
 
@@ -47,6 +52,8 @@ export const getLocalToken = async () => {
  * @returns {null}
  */
 export const storeLocalToken = async token => {
+  debug('storeLocalToken');
+
   const expiration = new Date();
   expiration.setHours(expiration.getHours() + 23);
 
@@ -60,6 +67,8 @@ export const storeLocalToken = async token => {
  * @returns {null}
  */
 export const deleteLocalToken = () => {
+  debug('deleteLocalToken');
+
   setCookie(USER_TOKEN_COOKIE, '', -1);
   setCookie(USER_TOKEN_EXPIRATION_COOKIE, '', -1);
 };
@@ -74,6 +83,8 @@ export const deleteLocalToken = () => {
  * @returns {false} attempts to retrieve user token failed
  */
 export const getToken = async (name, password) => {
+  debug('getToken');
+
   const token =
     (await getLocalToken()) || (await getNewToken(name, password)) || false;
 

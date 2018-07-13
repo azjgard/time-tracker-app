@@ -1,4 +1,8 @@
+import debug from './logger';
+
 export const setCookie = (name, value = '', hours) => {
+  debug('setCookie');
+
   let expires = '';
 
   if (hours) {
@@ -11,6 +15,8 @@ export const setCookie = (name, value = '', hours) => {
 };
 
 export const getCookie = name => {
+  debug('getCookie');
+
   return new Promise(resolve => {
     const cookieFound = false;
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import debug from '../lib/logger';
+
 import {incrementCounter, decrementCounter} from '../actions';
 
 const CounterComponent = ({count, increment, decrement}) => (
