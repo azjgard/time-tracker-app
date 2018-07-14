@@ -5,32 +5,6 @@ import {login, logout} from './actions/authActionCreators.js'; // Testing
 import {getToken} from './lib/token';
 import {connect} from 'react-redux'; // Testing
 
-// Testing
-const IndicatorComponent = ({isLoggedIn}) => (
-  <div>
-    <span>
-      {' '}
-      <b>Logged in:</b> {isLoggedIn ? 'true' : 'false'}
-    </span>
-  </div>
-);
-const mstp = state => ({
-  isLoggedIn: state.user.isLoggedIn,
-});
-const Indicator = connect(mstp)(IndicatorComponent);
-// /Testing
-
-const LogoutComponent = ({logout}) => (
-  <div>
-    <button onClick={logout}>Logout</button>
-  </div>
-);
-const mstp2 = state => ({});
-const mdtp = dispatch => ({
-  logout: () => dispatch(logout()),
-});
-const Logout = connect(mstp2, mdtp)(LogoutComponent);
-
 const LoginForm = () => (
   <Form
     className="LoginForm"
@@ -59,6 +33,17 @@ class AppComponent extends Component {
       <div className="App">
         <aside>
           <h1>Time Tracker</h1>
+          <small>
+            logged in: <b>{this.props.isLoggedIn ? 'true' : 'false'}</b>
+            <br />
+            {this.props.isLoggedIn ? (
+              <a href="#" onClick={this.props.logout}>
+                Logout?
+              </a>
+            ) : (
+              ''
+            )}
+          </small>
           <nav>
             <ul>
               <li>Home</li>
@@ -69,17 +54,18 @@ class AppComponent extends Component {
         </aside>
 
         <LoginForm />
-        <Indicator />
-        <Logout />
       </div>
     );
   }
 }
 
 const App = connect(
-  () => ({}),
+  state => ({
+    isLoggedIn: state.user.isLoggedIn,
+  }),
   dispatch => ({
     loginUser: token => dispatch({type: 'LOGIN_SUCCESS', token}),
+    logout: () => dispatch(logout()),
   }),
 )(AppComponent);
 
