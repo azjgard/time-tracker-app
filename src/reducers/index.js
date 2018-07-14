@@ -20,6 +20,25 @@ const auth = (auth = {}, action) => {
   }
 };
 
+const user = (user = {}, action) => {
+  switch (action.type) {
+    case 'LOGIN_SUCCESS':
+      return {
+        ...user,
+        isLoggedIn: true,
+        token: action.token,
+      };
+    case 'LOGOUT':
+      return {
+        ...user,
+        isLoggedIn: false,
+        token: null,
+      };
+    default:
+      return user;
+  }
+};
+
 const count = (count = 0, action) => {
   switch (action.type) {
     case 'INCREMENT_COUNTER':
@@ -31,6 +50,6 @@ const count = (count = 0, action) => {
   }
 };
 
-const reducer = combineReducers({count, clients, auth});
+const reducer = combineReducers({count, clients, auth, user});
 
 export default reducer;

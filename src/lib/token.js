@@ -1,7 +1,7 @@
-import {postAPI} from './lib/api';
-import {setCookie, getCookie} from './lib/cookie';
+import {postAPI} from './api';
+import {setCookie, getCookie} from './cookie';
 
-import {STORE_TOKEN} from './constants';
+import {STORE_TOKEN} from '../actions/constants';
 
 import debug from './logger';
 

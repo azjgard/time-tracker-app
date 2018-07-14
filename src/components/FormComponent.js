@@ -18,7 +18,13 @@ class FormComponent extends React.Component {
 
   submit(e) {
     e.preventDefault();
-    this.setState({shouldSubmit: true});
+    this.setState({...this.state, shouldSubmit: true});
+  }
+
+  resetForm() {
+    const formData = {};
+    for (let key in this.state.formData) formData[key] = '';
+    this.setState({shouldSubmit: false, formData});
   }
 
   handleChange(stateProp, newValue) {
@@ -33,25 +39,24 @@ class FormComponent extends React.Component {
 
   componentDidUpdate() {
     if (this.state.shouldSubmit) {
-      this.props.dispatch(
-        this.props.action({
-          formData: this.state.formData,
-          formName: this.props.name,
-        }),
-      );
+      this.props.dispatch(this.props.action(this.state.formData));
+      this.resetForm();
     }
   }
 
   renderFields() {
-    return this.props.fields.map(field => (
-      <div key={field.name}>
-        <label>{field.name}</label> <br />
-        <input
-          {...field}
-          onChange={e => this.handleChange(field.name, e.target.value)}
-        />
-      </div>
-    ));
+    return this.props.fields.map((field, index) => {
+      return (
+        <div key={field.name}>
+          <label>{field.name}</label> <br />
+          <input
+            {...field}
+            value={this.state.formData[field.name]}
+            onChange={e => this.handleChange(field.name, e.target.value)}
+          />
+        </div>
+      );
+    });
   }
 
   render() {
