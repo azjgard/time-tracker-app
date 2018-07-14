@@ -27,6 +27,8 @@ export const getCookie = name => {
       if (cookieName && cookieValue && cookieName.trim() === name.trim()) {
         resolve(cookieValue);
       }
+
+      return null;
     });
 
     if (!cookieFound) {

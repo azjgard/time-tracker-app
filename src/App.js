@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import Counter from './containers/Counter';
 import Form from './containers/FormContainer';
 
-import {login, logout} from './actions/auth.js';
-
+import {login, logout} from './actions/authActionCreators.js'; // Testing
 import {getToken} from './lib/token';
-
 import {connect} from 'react-redux'; // Testing
 
 // Testing
@@ -36,6 +33,7 @@ const Logout = connect(mstp2, mdtp)(LogoutComponent);
 
 const LoginForm = () => (
   <Form
+    className="LoginForm"
     fields={[
       {
         name: 'Username/Email',
@@ -43,7 +41,7 @@ const LoginForm = () => (
       },
       {
         name: 'Password',
-        type: 'text',
+        type: 'password',
       },
     ]}
     action={login}
@@ -53,16 +51,23 @@ const LoginForm = () => (
 class AppComponent extends Component {
   async componentDidMount() {
     const token = await getToken();
-
-    if (token) {
-      this.props.loginUser(token);
-    }
+    if (token) this.props.loginUser(token);
   }
 
   render() {
     return (
       <div className="App">
-        <Counter />
+        <aside>
+          <h1>Time Tracker</h1>
+          <nav>
+            <ul>
+              <li>Home</li>
+              <li>Login</li>
+              <li>Logout</li>
+            </ul>
+          </nav>
+        </aside>
+
         <LoginForm />
         <Indicator />
         <Logout />

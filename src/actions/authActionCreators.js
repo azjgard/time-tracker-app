@@ -1,6 +1,11 @@
 import {getToken, deleteLocalToken} from '../lib/token';
 
-import {LOGIN_ATTEMPT, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT} from './constants';
+import {
+  LOGIN_ATTEMPT,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT,
+} from './actionCreatorConstants';
 
 export const login = loginData => {
   return async dispatch => {

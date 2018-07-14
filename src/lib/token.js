@@ -1,8 +1,6 @@
 import {postAPI} from './api';
 import {setCookie, getCookie} from './cookie';
 
-import {STORE_TOKEN} from '../actions/constants';
-
 import debug from './logger';
 
 const BASE_URL = 'http://localhost:4000';

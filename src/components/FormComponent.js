@@ -6,12 +6,11 @@ class FormComponent extends React.Component {
 
     this.state = {
       shouldSubmit: false,
-      formData: {},
+      formData: this.props.fields.reduce((agg, field) => {
+        agg[field.name] = '';
+        return agg;
+      }, {}),
     };
-
-    this.props.fields.map(field => {
-      this.state.formData[field.name] = '';
-    });
 
     this.submit = this.submit.bind(this);
   }
@@ -48,11 +47,11 @@ class FormComponent extends React.Component {
     return this.props.fields.map((field, index) => {
       return (
         <div key={field.name}>
-          <label>{field.name}</label> <br />
           <input
             {...field}
             value={this.state.formData[field.name]}
             onChange={e => this.handleChange(field.name, e.target.value)}
+            placeholder={field.name}
           />
         </div>
       );
@@ -61,12 +60,12 @@ class FormComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
+      <form className={this.props.className}>
+        <div>
           {this.renderFields()}
           <button onClick={this.submit}>Submit</button>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
 }
