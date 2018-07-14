@@ -1,4 +1,5 @@
-import {postAPI} from './api';
+import axios from 'axios';
+
 import {setCookie, getCookie} from './cookie';
 
 import debug from './logger';
@@ -19,7 +20,8 @@ export const getNewToken = (name, password) => {
   debug('getNewToken');
 
   return new Promise(resolve => {
-    postAPI(LOGIN_URL, {name, password})
+    axios
+      .post(LOGIN_URL, {name, password})
       .then(response => resolve(response.data.token))
       .catch(e => resolve(false));
   });
