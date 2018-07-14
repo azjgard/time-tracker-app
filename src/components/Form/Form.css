@@ -1,0 +1,41 @@
+form,
+form input,
+form button {
+  display: block;
+}
+
+form {
+  width: 300px;
+  margin: 20px auto;
+  padding: 25px;
+  text-align: center;
+  background-color: #ccc;
+  border: 1px solid #aaa;
+}
+
+form > div,
+form > div > div {
+  display: inline-block;
+  text-align: left;
+}
+
+form input,
+form button,
+form > div > div {
+  width: 100%;
+}
+
+form input,
+form button {
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+form input {
+  border: 1px solid #aaa;
+  background-color: #fff;
+}
+
+form button {
+  margin-bottom: 0;
+}

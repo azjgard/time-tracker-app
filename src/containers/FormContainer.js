@@ -1,4 +1,4 @@
-import FormComponent from '../components/FormComponent';
+import FormComponent from '../components/Form/FormComponent';
 import {connect} from 'react-redux';
 
 const mapPropsToState = state => ({});
