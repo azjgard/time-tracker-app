@@ -7,10 +7,10 @@ form button {
 form {
   width: 300px;
   margin: 20px auto;
+  border: 1px solid #aaa;
   padding: 25px;
   text-align: center;
   background-color: #ccc;
-  border: 1px solid #aaa;
 }
 
 form > div,
