@@ -2,6 +2,14 @@ import React from 'react';
 import {Link} from 'redux-little-router';
 
 class Sidebar extends React.Component {
+  renderLinks() {
+    return this.props.links.map((link, index) => (
+      <li key={index}>
+        <Link href={link.href}>{link.text}</Link>
+      </li>
+    ));
+  }
+
   render() {
     return (
       <aside>
@@ -16,14 +24,7 @@ class Sidebar extends React.Component {
           )}
         </small>
         <nav>
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/login">Login</Link>
-            </li>
-          </ul>
+          <ul>{this.renderLinks()}</ul>
         </nav>
       </aside>
     );
