@@ -3,13 +3,10 @@ import {login, logout} from '../../actions/authActions';
 
 import AppComponent from './AppComponent';
 
-const mapStateToProps = state => ({
-  isLoggedIn: state.user.isLoggedIn,
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   loginUser: token => dispatch(login(null, token)),
-  logout: () => dispatch(logout()),
 });
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(AppComponent);

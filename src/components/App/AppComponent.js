@@ -6,6 +6,8 @@ import './App.css';
 
 import {Fragment} from 'redux-little-router';
 
+import Sidebar from '../Sidebar/SidebarContainer';
+
 const LoginForm = () => (
   <Form
     className="LoginForm"
@@ -32,25 +34,7 @@ class AppComponent extends Component {
   render() {
     return (
       <div className="App">
-        <aside>
-          <h1>Time Tracker</h1>
-          <small>
-            logged in: <b>{this.props.isLoggedIn ? 'true' : 'false'}</b>
-            <br />
-            {this.props.isLoggedIn ? (
-              <button onClick={this.props.logout}>Logout?</button>
-            ) : (
-              ''
-            )}
-          </small>
-          <nav>
-            <ul>
-              <li>Home</li>
-              <li>Login</li>
-              <li>Logout</li>
-            </ul>
-          </nav>
-        </aside>
+        <Sidebar />
         <main>
           <Fragment forRoute="/">
             <React.Fragment>
