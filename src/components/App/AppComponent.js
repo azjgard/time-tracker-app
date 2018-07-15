@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Form from '../Form/FormContainer';
-
 import {login} from '../../actions/authActions'; // Testing
 import {getToken} from '../../lib/token';
-
 import './App.css';
+
+import {Fragment} from 'redux-little-router';
 
 const LoginForm = () => (
   <Form
@@ -52,7 +52,16 @@ class AppComponent extends Component {
           </nav>
         </aside>
         <main>
-          <LoginForm />
+          <Fragment forRoute="/">
+            <React.Fragment>
+              <Fragment forRoute="/">
+                <h1>homepage</h1>
+              </Fragment>
+              <Fragment forRoute="/login">
+                <LoginForm />
+              </Fragment>
+            </React.Fragment>
+          </Fragment>
         </main>
       </div>
     );

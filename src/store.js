@@ -1,5 +1,5 @@
 import {compose, createStore, applyMiddleware} from 'redux';
-import {reducer, initialState} from './reducers';
+import {reducer} from './reducers';
 import {initializeCurrentLocation} from 'redux-little-router';
 
 import {routerMiddleware, routerEnhancer} from './router';
@@ -19,10 +19,11 @@ if (DEBUG) {
   middleware = applyMiddleware(thunk, routerMiddleware);
 }
 
-const store = createStore(
-  reducer,
-  initialState,
-  compose(routerEnhancer, middleware),
-);
+const store = createStore(reducer, compose(routerEnhancer, middleware));
+
+const initialLocation = store.getState().router;
+if (initialLocation) {
+  store.dispatch(initializeCurrentLocation(initialLocation));
+}
 
 export default store;
