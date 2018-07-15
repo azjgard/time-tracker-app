@@ -1,20 +1,17 @@
 import {getToken, deleteLocalToken} from '../lib/token';
 
-import {
-  LOGIN_ATTEMPT,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  LOGOUT,
-} from './actionCreatorConstants';
+import {LOGIN_ATTEMPT, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT} from './CONSTANTS';
 
-export const login = loginData => {
+export const login = (loginData, token = undefined) => {
   return async dispatch => {
     dispatch({type: LOGIN_ATTEMPT});
 
-    const token = await getToken(
-      loginData['Username/Email'],
-      loginData['Password'],
-    );
+    if (token === undefined) {
+      token = await getToken(
+        loginData['Username/Email'],
+        loginData['Password'],
+      );
+    }
 
     if (token) {
       dispatch({type: LOGIN_SUCCESS, token});

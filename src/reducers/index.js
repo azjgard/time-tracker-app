@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
-
-import {LOGIN_SUCCESS, LOGOUT} from '../actions/actionCreatorConstants';
+import {LOGIN_SUCCESS, LOGOUT} from '../actions/CONSTANTS';
 
 const user = (user = {}, action) => {
   switch (action.type) {

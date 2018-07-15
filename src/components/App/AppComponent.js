@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import Form from './containers/FormContainer';
+import Form from '../Form/FormContainer';
 
-import {login, logout} from './actions/authActionCreators.js'; // Testing
-import {getToken} from './lib/token';
-import {connect} from 'react-redux'; // Testing
+import {login} from '../../actions/authActions'; // Testing
+import {getToken} from '../../lib/token';
+
+import './App.css';
 
 const LoginForm = () => (
   <Form
@@ -37,9 +38,7 @@ class AppComponent extends Component {
             logged in: <b>{this.props.isLoggedIn ? 'true' : 'false'}</b>
             <br />
             {this.props.isLoggedIn ? (
-              <a href="#" onClick={this.props.logout}>
-                Logout?
-              </a>
+              <button onClick={this.props.logout}>Logout?</button>
             ) : (
               ''
             )}
@@ -52,21 +51,12 @@ class AppComponent extends Component {
             </ul>
           </nav>
         </aside>
-
-        <LoginForm />
+        <main>
+          <LoginForm />
+        </main>
       </div>
     );
   }
 }
 
-const App = connect(
-  state => ({
-    isLoggedIn: state.user.isLoggedIn,
-  }),
-  dispatch => ({
-    loginUser: token => dispatch({type: 'LOGIN_SUCCESS', token}),
-    logout: () => dispatch(logout()),
-  }),
-)(AppComponent);
-
-export default App;
+export default AppComponent;
