@@ -6,14 +6,13 @@ import {LOGIN_SUCCESS, LOGOUT} from '../actions/CONSTANTS';
 import {userReducer} from './userReducer';
 import {routerReducer} from '../router';
 
-const sharedLinks = [
+// EXPORT TO NEW FILE
+const sharedLinks = [];
+const loggedOutLinks = [
   {
-    type: 'yes',
     href: '/',
     text: 'Home',
   },
-];
-const loggedOutLinks = [
   {
     href: '/login',
     text: 'Login',
@@ -21,12 +20,14 @@ const loggedOutLinks = [
 ];
 const loggedInLinks = [
   {
+    href: '/dashboard',
+    text: 'Dashboard',
+  },
+  {
     href: '/logout',
     text: 'Logout',
   },
 ];
-
-// EXPORT TO NEW FILE
 const navReducer = (navLinks = [...sharedLinks, ...loggedOutLinks], action) => {
   switch (action.type) {
     case LOGOUT:

@@ -44,6 +44,9 @@ class AppComponent extends Component {
               <Fragment forRoute="/login">
                 <LoginForm />
               </Fragment>
+              <Fragment forRoute="/dashboard">
+                <h1>dashboard</h1>
+              </Fragment>
             </React.Fragment>
           </Fragment>
         </main>

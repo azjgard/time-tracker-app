@@ -9,3 +9,11 @@ export const {
 } = routerForBrowser({
   routes,
 });
+
+export const urlsToActions = {};
+
+export const loggedInOnlyPages = ['/dashboard', '/logout'];
+export const loggedOutOnlyPages = ['/', '/login'];
+
+export const LOGGED_IN_REDIRECT = '/dashboard';
+export const LOGGED_OUT_REDIRECT = '/login';
