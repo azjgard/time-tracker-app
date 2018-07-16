@@ -1,5 +1,5 @@
 main {
-  margin-left: 300px;
+  margin-left: 230px;
 }
 
 aside {
@@ -7,7 +7,7 @@ aside {
   left: 0;
   position: fixed;
 
-  width: 300px;
+  width: 230px;
   height: 100%;
   background-color: #ccc;
 }
