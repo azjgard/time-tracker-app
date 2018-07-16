@@ -4,7 +4,6 @@ import {ROUTER_LOCATION_CHANGED} from '../actions/CONSTANTS';
 import {logout} from '../actions/authActions';
 
 import {
-  urlsToActions,
   loggedInOnlyPages,
   loggedOutOnlyPages,
   LOGGED_IN_REDIRECT,
@@ -27,12 +26,6 @@ export const redirectMiddleware = store => next => action => {
     // BUG: can't access logout directly to logout, can only
     // be accomplished via a Link object..
     if (url === '/logout' && logout !== undefined) result = next(logout());
-
-    for (let actionUrl in urlsToActions) {
-      if (actionUrl === url) {
-        result = next(urlsToActions[actionUrl]());
-      }
-    }
   }
 
   return result;
