@@ -2,12 +2,10 @@ import {initializeCurrentLocation} from 'redux-little-router';
 import {compose, createStore, applyMiddleware} from 'redux';
 import {routerMiddleware, routerEnhancer} from './router';
 
-// Middleware
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import {redirectMiddleware} from './middleware/redirectMiddleware';
 
-// Env Variables
 import {DEBUG} from './config';
 
 import {reducer} from './reducers';

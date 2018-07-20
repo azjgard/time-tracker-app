@@ -7,6 +7,7 @@ import './App.css';
 import {Fragment} from 'redux-little-router';
 
 import Sidebar from '../Sidebar/SidebarContainer';
+import ProjectList from '../Project/ProjectListContainer';
 
 const LoginForm = () => (
   <Form
@@ -80,7 +81,7 @@ class AppComponent extends Component {
                 <LoginForm />
               </Fragment>
               <Fragment forRoute="/dashboard">
-                <h1>dashboard</h1>
+                <ProjectList />
               </Fragment>
             </React.Fragment>
           </Fragment>
