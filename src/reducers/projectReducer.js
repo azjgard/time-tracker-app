@@ -2,17 +2,104 @@ const initialProjects = [
   {
     name: 'Cryometrix Freezers',
     dueDate: new Date(),
-    tasks: ['task1', 'task1', 'task1', 'task1', 'task1'],
+    tasks: [
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'todo',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'todo',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'doing',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'review',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'todo',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'todo',
+      },
+    ],
   },
   {
     name: 'Reflect Scientific Corporate Website',
     dueDate: new Date(),
-    tasks: ['task1', 'task1', 'task1'],
+    tasks: [
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'todo',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'todo',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'doing',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'review',
+      },
+    ],
   },
   {
     name: 'SOS Method',
     dueDate: new Date(),
-    tasks: ['task1', 'task1', 'task1', 'task1', 'task1'],
+    tasks: [
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'todo',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'todo',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'doing',
+      },
+      {
+        name: 'Random task #1',
+        dueDate: new Date(),
+        description: '',
+        status: 'review',
+      },
+    ],
   },
 ];
 

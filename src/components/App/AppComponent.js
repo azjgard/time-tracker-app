@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import Form from '../Form/FormContainer';
 import {login} from '../../actions/authActions'; // Testing
 import {getToken} from '../../lib/token';
-import './App.css';
-
 import {Fragment} from 'redux-little-router';
 
 import Sidebar from '../Sidebar/SidebarContainer';
 import ProjectList from '../Project/ProjectListContainer';
+
+import './App.css';
 
 const LoginForm = () => (
   <Form
