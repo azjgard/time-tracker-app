@@ -5,7 +5,6 @@ import {getToken} from '../../lib/token';
 import {Fragment} from 'redux-little-router';
 
 import Sidebar from '../Sidebar/SidebarContainer';
-import ProjectList from '../Project/ProjectListContainer';
 
 import './App.css';
 
@@ -81,7 +80,7 @@ class AppComponent extends Component {
                 <LoginForm />
               </Fragment>
               <Fragment forRoute="/dashboard">
-                <ProjectList />
+                <h1>dashboard</h1>
               </Fragment>
             </React.Fragment>
           </Fragment>
