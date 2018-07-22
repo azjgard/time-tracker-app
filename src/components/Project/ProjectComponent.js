@@ -1,12 +1,29 @@
-import React from 'react';
-import './Project.css';
+import React from "react";
+import Task from "./TaskComponent";
+
+import { DropTarget } from "react-dnd";
+
+import "./Project.css";
+
+const listTarget = {
+  drop(props) {
+    console.log("droppppppeddd..");
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
 
 class ProjectComponent extends React.Component {
   renderSortedTasks() {
     const statuses = {
       todo: [],
       doing: [],
-      review: [],
+      review: []
     };
 
     this.props.tasks.map(t => statuses[t.status].push(t));
@@ -31,7 +48,9 @@ class ProjectComponent extends React.Component {
 
   renderTasks(tasks) {
     return (
-      <ul>{tasks.map((task, index) => <li key={index}>{task.name}</li>)}</ul>
+      <ul>
+        {tasks.map((task, index) => <Task name={task.name} key={index} />)}
+      </ul>
     );
   }
 
@@ -46,3 +65,5 @@ class ProjectComponent extends React.Component {
 }
 
 export default ProjectComponent;
+
+

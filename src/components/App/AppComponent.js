@@ -54,7 +54,7 @@ class AppComponent extends Component {
                     occaecat cupidatat non proident, sunt in culpa qui officia
                     deserunt mollit anim id est laborum.
                   </p>
-                  <img src="https://picsum.photos/400/200" />
+                  <img alt="nothing" src="https://picsum.photos/400/200" />
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna

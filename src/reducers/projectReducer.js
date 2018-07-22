@@ -4,36 +4,42 @@ const initialProjects = [
     dueDate: new Date(),
     tasks: [
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'todo',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'todo',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'doing',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'review',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'todo',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
@@ -46,24 +52,28 @@ const initialProjects = [
     dueDate: new Date(),
     tasks: [
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'todo',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'todo',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'doing',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
@@ -76,24 +86,28 @@ const initialProjects = [
     dueDate: new Date(),
     tasks: [
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'todo',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'todo',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
         status: 'doing',
       },
       {
+        id: 0,
         name: 'Random task #1',
         dueDate: new Date(),
         description: '',
