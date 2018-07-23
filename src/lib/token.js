@@ -1,11 +1,8 @@
 import axios from 'axios';
-
-import {setCookie, getCookie} from './cookie';
-
 import debug from './logger';
 
-const BASE_URL = 'http://localhost:4000';
-const LOGIN_URL = `${BASE_URL}/auth/login`;
+import {apiRoutes} from '../config';
+import {setCookie, getCookie} from './cookie';
 
 const USER_TOKEN_COOKIE = 'user_token';
 const USER_TOKEN_EXPIRATION_COOKIE = 'user_token_expiration';
@@ -21,7 +18,7 @@ export const getNewToken = (name, password) => {
 
   return new Promise(resolve => {
     axios
-      .post(LOGIN_URL, {name, password})
+      .post(apiRoutes.login, {name, password})
       .then(response => resolve(response.data.token))
       .catch(e => resolve(false));
   });

@@ -1,14 +1,24 @@
 import React from 'react';
-import TimeComponent from './TimeContainer';
+import Timer from './TimerComponent';
+
+const ClockIn = ({clockIn}) => <button onClick={clockIn}>Clock In</button>;
+const ClockOut = ({clockOut}) => <button onClick={clockOut}>Clock Out</button>;
+
+const ClockInOutButtons = ({clockIn, clockOut, isClockedIn}) => [
+  isClockedIn ? <ClockOut key={0} clockOut={clockOut} /> : '',
+  !isClockedIn ? <ClockIn key={1} clockIn={clockIn} /> : '',
+];
 
 class TimeLogger extends React.Component {
   render() {
     return (
       <div>
-        <h1>hey</h1>
-        <TimeComponent />
-        <button onClick={this.props.clockIn}>Clock In</button>
-        <button onClick={this.props.clockOut}>Clock Out</button>
+        <Timer time={this.props.clockInTime} />
+        <ClockInOutButtons
+          clockIn={this.props.clockIn}
+          clockOut={this.props.clockOut}
+          isClockedIn={this.props.clockInTime}
+        />
       </div>
     );
   }

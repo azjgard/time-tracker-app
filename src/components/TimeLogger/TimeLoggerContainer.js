@@ -3,7 +3,9 @@ import TimeLoggerComponent from './TimeLoggerComponent';
 
 import {clockIn, clockOut} from '../../actions/timelogActions';
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  clockInTime: state.timelog.clockInTime,
+});
 
 const mapDispatchToProps = dispatch => ({
   clockIn: () => dispatch(clockIn(new Date())),
