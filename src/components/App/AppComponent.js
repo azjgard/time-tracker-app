@@ -4,7 +4,10 @@ import {login} from '../../actions/authActions'; // Testing
 import {getToken} from '../../lib/token';
 import {Fragment} from 'redux-little-router';
 
+import {getCookie} from '../../lib/cookie';
+
 import Sidebar from '../Sidebar/SidebarContainer';
+import TimeLogger from '../TimeLogger/TimeLoggerContainer';
 
 import './App.css';
 
@@ -29,6 +32,11 @@ class AppComponent extends Component {
   async componentDidMount() {
     const token = await getToken();
     if (token) this.props.loginUser(token);
+
+    const clockInTimeString = await getCookie('clockInTime');
+    if (clockInTimeString) {
+      this.props.clockIn(new Date(clockInTimeString));
+    }
   }
 
   render() {
@@ -80,7 +88,10 @@ class AppComponent extends Component {
                 <LoginForm />
               </Fragment>
               <Fragment forRoute="/dashboard">
-                <h1>dashboard</h1>
+                <React.Fragment>
+                  <h1>dashboard</h1>
+                  <TimeLogger />
+                </React.Fragment>
               </Fragment>
             </React.Fragment>
           </Fragment>
