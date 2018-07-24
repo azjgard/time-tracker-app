@@ -1,11 +1,12 @@
-export const LOGIN_ATTEMPT = 'LOGIN_ATTEMPT';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGIN_ATTEMPT = "LOGIN_ATTEMPT";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
-export const LOGOUT = 'LOGOUT';
+export const LOGOUT = "LOGOUT";
 
-export const ROUTER_LOCATION_CHANGED = 'ROUTER_LOCATION_CHANGED';
+export const ROUTER_LOCATION_CHANGED = "ROUTER_LOCATION_CHANGED";
 
-export const CLOCK_IN = 'CLOCK_IN';
-export const CLOCK_OUT = 'CLOCK_OUT';
-export const INCREMENT_TIME = 'INCREMENT_TIME';
+export const CLOCK_IN = "CLOCK_IN";
+export const CLOCK_OUT = "CLOCK_OUT";
+export const INCREMENT_TIME = "INCREMENT_TIME";
+export const REFRESH_TIMER = "REFRESH_TIMER";

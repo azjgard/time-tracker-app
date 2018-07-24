@@ -1,9 +1,9 @@
-import debug from './logger';
+import debug from "./logger";
 
-export const setCookie = (name, value = '', hours) => {
-  debug('setCookie');
+export const setCookie = (name, value = "", hours) => {
+  debug("setCookie");
 
-  let expires = '';
+  let expires = "";
 
   if (hours) {
     const expiration = new Date();
@@ -15,14 +15,14 @@ export const setCookie = (name, value = '', hours) => {
 };
 
 export const getCookie = name => {
-  debug('getCookie');
+  debug("getCookie");
 
   return new Promise(resolve => {
     const cookieFound = false;
 
-    document.cookie.split(';').map(cookieKeyValue => {
-      const cookieName = cookieKeyValue.split('=')[0];
-      const cookieValue = cookieKeyValue.split('=')[1];
+    document.cookie.split(";").map(cookieKeyValue => {
+      const cookieName = cookieKeyValue.split("=")[0];
+      const cookieValue = cookieKeyValue.split("=")[1];
 
       if (cookieName && cookieValue && cookieName.trim() === name.trim()) {
         resolve(cookieValue);
@@ -35,4 +35,8 @@ export const getCookie = name => {
       resolve(false);
     }
   });
+};
+
+export const deleteCookie = name => {
+  return setCookie(name, "", -1);
 };

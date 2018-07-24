@@ -1,42 +1,46 @@
-import axios from 'axios';
-import {apiRoutes} from '../config';
-import {setCookie} from '../lib/cookie';
-import {CLOCK_IN, CLOCK_OUT} from './CONSTANTS';
-import store from '../store';
+import axios from "axios";
+import debug from "../lib/logger";
+import { apiRoutes } from "../config";
+import { setCookie, deleteCookie } from "../lib/cookie";
+import { CLOCK_IN, CLOCK_OUT } from "./CONSTANTS";
+import store from "../store";
 
-import {authorizedPost} from '../lib/api';
+import { authorizedPost, authorizedGet } from "../lib/api";
 
 export const clockIn = date => {
-  setCookie('clockInTime', String(date));
+  setCookie("clockInTime", String(date));
   return {
     type: CLOCK_IN,
-    date,
+    date
   };
 };
 
 export const clockOut = () => {
   return async dispatch => {
-    setCookie('clockInTime', '', -1);
+    deleteCookie("clockInTime");
 
     const clockInTime = store.getState().timelog.clockInTime;
     const clockOutTime = new Date();
 
-    console.log('clockInTime:');
-    console.log(clockInTime);
+    await authorizedPost(apiRoutes.clockTime, {
+      clockInTime,
+      clockOutTime
+    }).catch(e => {
+      debug("Something went wrong with saving the timelog..");
+      debug("Clock-in Time: " + clockInTime);
+      debug("Clock-out Time: " + clockOut);
+      debug("Error:");
+      debug(e);
+    });
 
-    console.log('clockOutTime:');
-    console.log(clockOutTime);
+    dispatch({ type: CLOCK_OUT });
+  };
+};
 
-    await authorizedPost(apiRoutes.clockTime, {clockInTime, clockOutTime})
-      .then(response => {
-        console.log('response');
-        console.log(response);
-      })
-      .catch(e => {
-        console.log('error');
-        console.log(e);
-      });
-
-    dispatch({type: CLOCK_OUT});
+export const getLogs = () => {
+  return async dispatch => {
+    const logs = await authorizedGet(apiRoutes.getLogs);
+    console.log(logs);
+    // dispatch an action with the logs that we grab from the api
   };
 };

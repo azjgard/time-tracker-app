@@ -7,7 +7,7 @@ import { Fragment } from "redux-little-router";
 import { getCookie } from "../../lib/cookie";
 
 import Sidebar from "../Sidebar/SidebarContainer";
-import TimeLogger from "../TimeLogger/TimeLoggerContainer";
+import Dashboard from "../Dashboard/DashboardContainer";
 
 import "./App.css";
 
@@ -60,10 +60,7 @@ class AppComponent extends Component {
                 <LoginForm />
               </Fragment>
               <Fragment forRoute="/dashboard">
-                <React.Fragment>
-                  <h1>dashboard</h1>
-                  <TimeLogger />
-                </React.Fragment>
+                <Dashboard />
               </Fragment>
             </React.Fragment>
           </Fragment>

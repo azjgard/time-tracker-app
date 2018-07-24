@@ -25,9 +25,9 @@ class TimeComponent extends React.Component {
       const seconds = Math.floor(totalSeconds % 60);
       const hours = totalMinutes ? Math.floor(totalMinutes / 60) : "0";
 
-      const timeString = `${hours}:${minutes}:${
-        seconds < 10 ? "0" + seconds : seconds
-      }`;
+      const timeString = `${hours ? hours : "0"}:${
+        minutes < 10 ? "0" + minutes : minutes
+      }:${seconds < 10 ? "0" + seconds : seconds}`;
 
       this.setState({ time: timeString });
     } else {
