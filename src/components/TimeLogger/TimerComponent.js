@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // We increment the clocked-in timer using local state
 // so that we don't trigger ALL of our reducers by dispatching
@@ -10,22 +10,28 @@ class TimeComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {time: null};
+    this.state = { time: null };
     this.incrementTimer = this.incrementTimer.bind(this);
   }
 
   incrementTimer() {
     if (this.props.time) {
       const timeDifference = new Date().getTime() - this.props.time.getTime();
-      const timeDifferenceInSeconds = timeDifference / 1000;
 
-      const hours = Math.floor(timeDifferenceInSeconds / 60);
-      const minutes = Math.floor(timeDifferenceInSeconds % 60);
-      const timeString = `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+      const totalSeconds = timeDifference / 1000;
+      const totalMinutes = Math.floor(totalSeconds / 60);
 
-      this.setState({time: timeString});
+      const minutes = Math.floor(totalMinutes % 60);
+      const seconds = Math.floor(totalSeconds % 60);
+      const hours = totalMinutes ? Math.floor(totalMinutes / 60) : "0";
+
+      const timeString = `${hours}:${minutes}:${
+        seconds < 10 ? "0" + seconds : seconds
+      }`;
+
+      this.setState({ time: timeString });
     } else {
-      this.setState({time: null});
+      this.setState({ time: null });
     }
   }
 
@@ -34,7 +40,7 @@ class TimeComponent extends React.Component {
   }
 
   render() {
-    return <div>{this.state.time ? this.state.time : '0:00'}</div>;
+    return <div>{this.state.time ? this.state.time : "0:00:00"}</div>;
   }
 }
 
