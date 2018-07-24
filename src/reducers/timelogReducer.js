@@ -23,8 +23,6 @@ const timelogReducer = (state = initialState, action) => {
     case CLOCK_IN:
       return { ...state, clockInTime: action.date };
     case CLOCK_OUT:
-      console.log("clocking out...");
-      console.log(action);
       return {
         ...state,
         clockInTime: null,

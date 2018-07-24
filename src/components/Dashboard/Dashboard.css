@@ -1,0 +1,11 @@
+.Timelogs {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+.Timelogs > div {
+  padding: 5px;
+  border: 1px solid #ccc;
+}
