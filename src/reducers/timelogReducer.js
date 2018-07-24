@@ -1,4 +1,9 @@
-import { CLOCK_IN, CLOCK_OUT, REFRESH_TIMER } from "../actions/CONSTANTS";
+import {
+  CLOCK_IN,
+  CLOCK_OUT,
+  REFRESH_TIMER,
+  GET_LOGS_SUCCESS
+} from "../actions/CONSTANTS";
 
 const initialState = {
   clockInTime: null,
@@ -18,9 +23,17 @@ const timelogReducer = (state = initialState, action) => {
     case CLOCK_IN:
       return { ...state, clockInTime: action.date };
     case CLOCK_OUT:
-      return { ...state, clockInTime: null };
+      console.log("clocking out...");
+      console.log(action);
+      return {
+        ...state,
+        clockInTime: null,
+        logs: [...state.logs, action.timelog]
+      };
     case REFRESH_TIMER:
       return { ...state, refresh: new Date() };
+    case GET_LOGS_SUCCESS:
+      return { ...state, logs: action.logs };
     default:
       return state;
   }

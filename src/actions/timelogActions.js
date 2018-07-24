@@ -1,8 +1,7 @@
-import axios from "axios";
 import debug from "../lib/logger";
 import { apiRoutes } from "../config";
 import { setCookie, deleteCookie } from "../lib/cookie";
-import { CLOCK_IN, CLOCK_OUT } from "./CONSTANTS";
+import { CLOCK_IN, CLOCK_OUT, GET_LOGS_SUCCESS } from "./CONSTANTS";
 import store from "../store";
 
 import { authorizedPost, authorizedGet } from "../lib/api";
@@ -22,7 +21,7 @@ export const clockOut = () => {
     const clockInTime = store.getState().timelog.clockInTime;
     const clockOutTime = new Date();
 
-    await authorizedPost(apiRoutes.clockTime, {
+    const response = await authorizedPost(apiRoutes.clockTime, {
       clockInTime,
       clockOutTime
     }).catch(e => {
@@ -33,14 +32,15 @@ export const clockOut = () => {
       debug(e);
     });
 
-    dispatch({ type: CLOCK_OUT });
+    const timelog = response.data.timelog;
+
+    dispatch({ type: CLOCK_OUT, timelog });
   };
 };
 
 export const getLogs = () => {
   return async dispatch => {
-    const logs = await authorizedGet(apiRoutes.getLogs);
-    console.log(logs);
-    // dispatch an action with the logs that we grab from the api
+    const { data } = await authorizedGet(apiRoutes.getLogs);
+    dispatch({ type: GET_LOGS_SUCCESS, logs: data.logs });
   };
 };

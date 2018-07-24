@@ -10,6 +10,9 @@ const mapDispatchToProps = dispatch => ({
   getLogs: () => dispatch(getLogs())
 });
 
-const Dashboard = connect(mapStateToProps)(DashboardComponent);
+const Dashboard = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardComponent);
 
 export default Dashboard;

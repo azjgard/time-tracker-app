@@ -3,22 +3,39 @@ import TimeLogger from "../TimeLogger/TimeLoggerContainer";
 
 class Dashboard extends React.Component {
   renderLogs() {
-    return <span>logs</span>;
+    if (!this.props.logs) {
+      return <h2>No logs found.</h2>;
+    } else {
+      return this.props.logs.map((logObject, i) => {
+        if (logObject) {
+          return (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                justifyContent: "space-around"
+              }}
+            >
+              <span>
+                <b>{i}</b>
+              </span>
+              <span>
+                <b>Clocked In: </b> {logObject.startTime}
+              </span>
+              <span>
+                <b>Clocked Out: </b> {logObject.endTime}{" "}
+              </span>
+            </div>
+          );
+        } else {
+          return "";
+        }
+      });
+    }
   }
 
-  componentDidMount() {
-    console.log("---------");
-    console.log("---------");
-    console.log("---------");
-    console.log("---------");
-    console.log("---------");
-    console.log("dashboard mounted");
-    console.log(this.props.logs);
-    console.log("---------");
-    console.log("---------");
-    console.log("---------");
-    console.log("---------");
-    console.log("---------");
+  async componentDidMount() {
+    await this.props.getLogs();
   }
 
   render() {

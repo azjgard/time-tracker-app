@@ -10,3 +10,5 @@ export const CLOCK_IN = "CLOCK_IN";
 export const CLOCK_OUT = "CLOCK_OUT";
 export const INCREMENT_TIME = "INCREMENT_TIME";
 export const REFRESH_TIMER = "REFRESH_TIMER";
+
+export const GET_LOGS_SUCCESS = "GET_LOGS_SUCCESS";
